@@ -19,7 +19,7 @@ const phaseL2 = document.getElementById('phase-l2');
 // MACRO IMPOSTAZIONI
 const HACK_PASSCODE = 'DAHLIA666';
 const TARGET_TAPS = 150;
-const SPAMLAY_SPEED = 1000; // Rate of image popping rallentato per evitare Memory Crash su iPhone
+const SPAMLAY_SPEED = 1800; // Rate of image popping rallentato ancora di più per la calma (1.8 secondi)
 const SECRET_L2_PASSCODE = 'THRONE2026';
 const ICLOUD_FINAL_PIN = '6666';
 const EXACT_PHRASE = "i am goddess dahlia's bank account";
@@ -263,7 +263,8 @@ function verifyTyping() {
     const inputField = document.getElementById('type-input');
     const errMsg = document.getElementById('type-error');
     
-    const userInput = inputField.value.trim().toLowerCase();
+    // Sostituiamo gli apostrofi curvi dell'iPhone (’) con l'apostrofo standard (')
+    const userInput = inputField.value.trim().toLowerCase().replace(/[’´`]/g, "'");
 
     if (userInput === EXACT_PHRASE) {
         triggerFlash();
