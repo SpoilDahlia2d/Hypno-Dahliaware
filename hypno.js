@@ -19,7 +19,7 @@ const phaseL2 = document.getElementById('phase-l2');
 // MACRO IMPOSTAZIONI
 const HACK_PASSCODE = 'DAHLIA666';
 const TARGET_TAPS = 150;
-const SPAMLAY_SPEED = 500; 
+const SPAMLAY_SPEED = 1000; // Rate of image popping rallentato per evitare Memory Crash su iPhone
 const SECRET_L2_PASSCODE = 'THRONE2026';
 const ICLOUD_FINAL_PIN = '6666';
 const EXACT_PHRASE = "i am goddess dahlia's bank account";
@@ -71,6 +71,15 @@ function verifyHackCode() {
     const input = document.getElementById('hack-password');
     const err = document.getElementById('hack-error');
     if (input.value.trim().toUpperCase() === HACK_PASSCODE) {
+        
+        // Entra in Modalità Immersiva FullScreen (funziona sia su Android che PC)
+        try {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch((e)=>console.log(e));
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen().catch((e)=>console.log(e));
+            }
+        } catch(e) {}
         
         // Start Audio on First Ever Click
         const audioTrack = document.getElementById('hypno-audio');
@@ -196,11 +205,14 @@ function spawnMedia() {
         element.className = 'popup-text';
     }
 
-    const maxX = window.innerWidth - 180; 
-    const maxY = window.innerHeight - 200;
+    // Margini dinamici in base allo schermo per evitare sbordamenti orizzontali estremi
+    const mediaWidth = window.innerWidth > 800 ? 350 : 150; 
+    const maxX = window.innerWidth - mediaWidth; 
+    const maxY = window.innerHeight - 240; 
     
-    const randomX = Math.max(10, Math.floor(Math.random() * maxX));
-    const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+    // Assicura che rientri nello schermo
+    const randomX = Math.max(5, Math.min(Math.floor(Math.random() * maxX), window.innerWidth - mediaWidth));
+    const randomY = Math.max(5, Math.min(Math.floor(Math.random() * maxY), window.innerHeight - 250));
 
     element.style.left = randomX + 'px';
     element.style.top = randomY + 'px';
@@ -208,7 +220,8 @@ function spawnMedia() {
     const rot = Math.floor(Math.random() * 40) - 20;
     element.style.transform = `rotate(${rot}deg)`;
     
-    if (popupsContainer.children.length > 25) {
+    // RAM MEMORY PROTECTION (iOS rompe immagini oltre troppi mega)
+    if (popupsContainer.children.length > 10) {
         popupsContainer.removeChild(popupsContainer.firstChild);
     }
     popupsContainer.appendChild(element);
