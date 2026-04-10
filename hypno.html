@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Goddess Dahlia | Hypnotic Session</title>
+    <link rel="stylesheet" href="hypno.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+</head>
+<body id="hypno-body">
+    
+    <!-- Mobile Flash & Invert Overlay -->
+    <div id="flash-overlay"></div>
+
+    <!-- Background Audio -->
+    <audio id="hypno-audio" loop src="assets/audio.mp3"></audio>
+
+    <!-- Level 2 Video (Hidden until Unlocked) -->
+    <video id="level2-video" loop muted playsinline class="hidden">
+        <source src="assets/_users_1bfbbe21-63b8-42b9-810d-b26e0bf9eac7_generated_69b0ad23-5ba5-46f3-b943-2a78a636fca7_generated_video_hd.mp4" type="video/mp4">
+    </video>
+
+    <!-- Media Popups -->
+    <div id="popups-container"></div>
+    <div id="overlay-flash" class="flash-pink hidden"></div>
+
+    <!-- TINY BOTTOM COUNTER FOR TAPPING (Phase 2) -->
+    <div id="phase-tap-mini" class="hidden">
+        <button id="mini-tap-btn" onclick="handleTap()">CLICK <span id="tap-count">0</span>/150</button>
+    </div>
+
+    <!-- FAKE HACKING OVERLAY (PHASE 0) -->
+    <div id="hack-screen" class="active">
+        <div class="hack-container">
+            <h1 class="lux-glitch">SECURITY OVERRIDE</h1>
+            <p class="lux-alert">TARGET ACQUIRED. INITIATING DEVICE SCAN...</p>
+            
+            <div id="scan-terminal">
+                <!-- Text injected by JS -->
+            </div>
+
+            <div id="hack-login" class="hidden">
+                <p class="lux-alert" style="color:#d4af37">YOU ARE LOGGED AND TRACKED.<br>ENTER CLEARANCE CODE.</p>
+                <input type="password" id="hack-password" placeholder="ACCESS CODE" autocomplete="off" class="lux-input">
+                <p id="hack-error" class="error-msg"></p>
+                <div class="centered" style="margin-top:20px;">
+                    <button class="btn btn-gold" onclick="verifyHackCode()">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper hidden" id="main-wrapper">
+        <div id="main-panel" class="panel">
+            
+            <!-- PHASE 1: Start -->
+            <div id="phase-start" class="phase-container active">
+                <h1 class="luxury-title">THE GODDESS AWAITS</h1>
+                <p>Silence the world. Prepare to submit your mind and wallet.</p>
+                <div class="btn-wrap">
+                    <button class="btn hazard-btn" onclick="startSession()">SUBMIT NOW</button>
+                </div>
+            </div>
+
+            <!-- PHASE 3: Typing (Phase 2 is outside this panel) -->
+            <div id="phase-type" class="phase-container hidden">
+                <h2 class="sub-title">YOUR ONLY PURPOSE</h2>
+                <p>A true submissive makes no mistakes. Type this perfectly.</p>
+                
+                <div class="target-phrase">i am goddess dahlia's bank account</div>
+                
+                <input type="text" id="type-input" placeholder="Prove it..." autocomplete="off">
+                <p id="type-error" class="error-msg"></p>
+                
+                <div class="centered" style="margin-top: 20px;">
+                    <button class="btn hazard-btn" id="btn-verify" onclick="verifyTyping()">CONFIRM DEVOTION</button>
+                </div>
+            </div>
+
+            <!-- PHASE 4: Paywall (Throne Gate) -->
+            <div id="phase-paywall" class="phase-container hidden">
+                <h1 class="luxury-title">TRIBUTE REQUIRED</h1>
+                <p>Only those who empty their wallets have the privilege to access Level 2.
+                <br><br>Send tribute to my Throne to receive the Secret Access Code.</p>
+                <div class="btn-wrap">
+                    <a href="https://throne.me/" target="_blank" class="btn btn-gold">PAY ON THRONE</a>
+                </div>
+
+                <div class="vault-section">
+                    <p class="vault-label">Received the code?</p>
+                    <input type="password" id="vault-input" placeholder="ENTER LEVEL 2 CODE" autocomplete="off">
+                    <p id="vault-error" class="error-msg"></p>
+                    <button class="btn btn-outline" style="margin-top: 15px;" onclick="verifyVault()">UNLOCK LEVEL 2</button>
+                </div>
+            </div>
+
+            <!-- PHASE 5: Level 2 Video Infinity -->
+            <div id="phase-l2" class="phase-container hidden">
+                <h1 class="luxury-title l2-title">YOUR LIFE IS MINE</h1>
+                <p class="l2-text">You are my slave for eternity. Keep watching. Empty your mind.</p>
+                
+                <div class="final-links" style="margin-top: 40px; border-top: 1px solid rgba(255,20,147,0.3); padding-top: 20px;">
+                    <p style="font-size: 11px; text-transform: uppercase; color: #d4af37;">Final Rewards</p>
+                    <div style="display:flex; flex-direction:column; gap:15px; margin-bottom: 20px;">
+                        <a href="https://mega.nz/file/Y4wDlRrZ#f_6qwDY3cuKs2PTFwlNrlI_wc4cPLaJS9IyBnHTO218" target="_blank" class="luxury-btn-small">DOWNLOAD APK</a>
+                        <button onclick="requestICloudPin()" class="luxury-btn-small premium-btn">PREMIUM iCLOUD SHORTCUT</button>
+                    </div>
+                </div>
+                
+                <div id="icloud-pin-area" class="hidden" style="background:rgba(0,0,0,0.6); padding: 15px; border-radius: 10px;">
+                    <input type="password" id="icloud-pin" placeholder="PIN CODE" autocomplete="off" style="width:100px; padding:10px;">
+                    <button onclick="verifyICloudPin()" class="btn btn-gold" style="padding:10px 15px; font-size:11px;">UNLOCK</button>
+                    <p id="icloud-err" class="error-msg"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="hypno.js"></script>
+</body>
+</html>
