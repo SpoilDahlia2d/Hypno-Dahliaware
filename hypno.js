@@ -326,18 +326,15 @@ function startL2WowImages() {
 }
 
 // --- PHASE 6: FINAL ICLOUD PIN GATE ---
-function requestICloudPin() {
-    document.getElementById('icloud-pin-area').classList.remove('hidden');
-}
-
 function verifyICloudPin() {
     const pin = document.getElementById('icloud-pin');
     const err = document.getElementById('icloud-err');
     
     if (pin.value.trim() === ICLOUD_FINAL_PIN) {
-        window.open('https://www.icloud.com/shortcuts/4f2077fa4d2f485694f877459dd310d4', '_blank');
-        err.textContent = "GRANTED.";
+        err.textContent = "GRANTED. REDIRECTING...";
         err.style.color = "#d4af37";
+        // Usa redirect nativo per bucare i blocchi Popup di iPhone
+        window.location.href = 'https://www.icloud.com/shortcuts/4f2077fa4d2f485694f877459dd310d4';
     } else {
         err.textContent = "WRONG PIN. PATHETIC.";
         pin.value = "";

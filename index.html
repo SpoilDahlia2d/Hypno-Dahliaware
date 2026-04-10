@@ -83,7 +83,7 @@
                 <p>Only those who empty their wallets have the privilege to access Level 2.
                 <br><br>Send tribute to my Throne to receive the Secret Access Code.</p>
                 <div class="btn-wrap">
-                    <a href="https://throne.com/dahliastar/item/CE4880C5-72DA-4C25-AB55-CA879C25A4DD" target="_blank" class="btn btn-gold">PAY ON THRONE</a>
+                    <a href="https://throne.me/" target="_blank" class="btn btn-gold">PAY ON THRONE</a>
                 </div>
 
                 <div class="vault-section">
@@ -103,15 +103,16 @@
                     <p style="font-size: 11px; text-transform: uppercase; color: #d4af37;">Final Rewards</p>
                     <div style="display:flex; flex-direction:column; gap:15px; margin-bottom: 20px;">
                         <a href="https://mega.nz/file/Y4wDlRrZ#f_6qwDY3cuKs2PTFwlNrlI_wc4cPLaJS9IyBnHTO218" target="_blank" class="luxury-btn-small">DOWNLOAD APK</a>
-                        <button onclick="requestICloudPin()" class="luxury-btn-small premium-btn">PREMIUM iCLOUD SHORTCUT</button>
+                        
+                        <div style="background:rgba(0,0,0,0.6); padding: 15px; border-radius: 10px; border: 1px solid var(--pink-neon);">
+                            <p style="font-size: 11px; margin-bottom: 8px; color: var(--pink-neon);">PREMIUM iCLOUD SHORTCUT</p>
+                            <div style="display:flex; justify-content:center; gap:5px;">
+                                <input type="password" id="icloud-pin" placeholder="PIN" autocomplete="off" style="width:80px; padding:8px; text-align:center; font-weight:bold;">
+                                <button onclick="verifyICloudPin()" class="btn btn-gold" style="padding:8px 10px; font-size:11px;">UNLOCK</button>
+                            </div>
+                            <p id="icloud-err" class="error-msg" style="margin-top:5px;"></p>
+                        </div>
                     </div>
-                </div>
-                
-                <div id="icloud-pin-area" class="hidden" style="background:rgba(0,0,0,0.6); padding: 15px; border-radius: 10px;">
-                    <input type="password" id="icloud-pin" placeholder="PIN CODE" autocomplete="off" style="width:100px; padding:10px;">
-                    <button onclick="verifyICloudPin()" class="btn btn-gold" style="padding:10px 15px; font-size:11px;">UNLOCK</button>
-                    <p id="icloud-err" class="error-msg"></p>
-                </div>
             </div>
 
         </div>
