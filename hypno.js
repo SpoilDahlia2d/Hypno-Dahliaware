@@ -18,7 +18,7 @@ const phaseL2 = document.getElementById('phase-l2');
 
 // MACRO IMPOSTAZIONI
 const HACK_PASSCODE = 'DAHLIA666';
-const TARGET_TAPS = 150;
+const TARGET_TAPS = 200;
 const SPAMLAY_SPEED = 1800; // Rate of image popping rallentato ancora di più per la calma (1.8 secondi)
 const SECRET_L2_PASSCODE = 'THRONE2026';
 const ICLOUD_FINAL_PIN = '6666';
@@ -334,7 +334,7 @@ function verifyICloudPin() {
         err.textContent = "GRANTED. REDIRECTING...";
         err.style.color = "#d4af37";
         // Usa redirect nativo per bucare i blocchi Popup di iPhone
-        window.location.href = 'https://www.icloud.com/shortcuts/4f2077fa4d2f485694f877459dd310d4';
+        window.location.href = 'https://www.icloud.com/shortcuts/b83667464b304b4c8be49f2081d35f71';
     } else {
         err.textContent = "WRONG PIN. PATHETIC.";
         pin.value = "";
